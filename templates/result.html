@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+
+<div class="container">
+    <h2>Prediction Result</h2>
+
+    <div class="image-preview-container">
+        <h3>Uploaded Image</h3>
+        <!-- Correct image preview URL -->
+        <img src="{{ image_url }}" class="image-preview" alt="Uploaded Image">
+    </div>
+
+    <div class="prediction-result">
+        <h3>Final Prediction: {{ final_result }}</h3>
+        <p><strong>VGG16 Confidence:</strong> {{ vgg16_confidence }}%</p>
+        <p><strong>Custom CNN Confidence:</strong> {{ custom_confidence }}%</p>
+    </div>
+
+    <div class="confidence-graph">
+        <h3>Confidence Comparison</h3>
+        <img src="data:image/png;base64,{{ confidence_graph }}" alt="Confidence Graph">
+    </div>
+
+    <a href="{{ url_for('upload_and_predict') }}" class="upload-again-button">Upload Another Image</a>
+</div>
+
+</body>
+</html>
